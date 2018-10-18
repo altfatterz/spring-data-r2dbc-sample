@@ -34,3 +34,6 @@ postgres=# \d
 
 ```
 
+http :8080/customers
+
+http :8080/customers/search\?lastName=White
