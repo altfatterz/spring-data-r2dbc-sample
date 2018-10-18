@@ -6,6 +6,7 @@ import reactor.core.publisher.Flux;
 
 public interface CustomerRepository extends ReactiveCrudRepository<Customer, Long> {
 
+    // Query derivation not yet supported!
     @Query("SELECT * FROM customers WHERE first_name ilike $1 or last_name ilike $1")
     Flux<Customer> findByName(String name);
 }
