@@ -51,10 +51,10 @@ public class DatabaseConfiguration {
     CommandLineRunner runner(DatabaseClient client) {
         return args -> {
             Stream.of("schema.sql", "data.sql")
-                    .peek(it -> log.info(String.format("Executing SQL from %s…", it)))
+                    .peek(it -> log.info(String.format("Executing SQL from %s", it)))
                     .map(ClassPathResource::new)
                     .flatMap(DatabaseConfiguration::lines)
-                    .peek(it -> log.info(String.format("Executing %s.", it)))
+                    .peek(it -> log.info(String.format("Executing %s", it)))
                     .forEach(line -> client.execute().sql(line).fetch().rowsUpdated().block());
         };
     }
